@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+@theme {
+  /* LUXURY PALETTE */
+  --color-primary-deep: #020617;   /* Deepest Midnight */
+  --color-card-blue: #0f172a;     /* Slate Navy for cards */
+  --color-accent: #f59e0b;        /* Premium Amber Gold */
+  --color-accent-soft: #fbbf24;   /* Lighter Gold for highlights */
+  --color-live-green: #10b981;    /* Emerald for "Live" indicators */
+  --color-surface: #020617;       /* Page Background */
+  
+  /* MODERN FONT */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-surface);
+    color: #f8fafc;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+/* THE "GLASS" EFFECT - Makes cards look expensive */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  transition: all 0.3s ease;
+}
+
+.glass-panel:hover {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 30px rgba(245, 158, 11, 0.15);
+  transform: translateY(-4px);
+}
+
+/* SMOOTH MARQUEE */
+@keyframes marquee-flow {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee-forward {
+  display: flex;
+  width: max-content;
+  animation: marquee-flow 40s linear infinite;
+}
+
+.animate-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: marquee-flow 40s linear infinite reverse;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
